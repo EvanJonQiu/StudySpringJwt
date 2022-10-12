@@ -37,6 +37,7 @@ public class ApplicationSecurityConfigurer extends WebSecurityConfigurerAdapter 
             .antMatchers("/hello", "/authenticate").permitAll()
             .anyRequest().authenticated();
    
+        // 添加JWT Token Filter，用来检查请求头中是否包含token
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
